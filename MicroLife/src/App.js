@@ -5,6 +5,7 @@ import Content from './content/Content';
 import Nav from './nav/Nav';
 
 const App = () => {
+  
   return (
     <div className="App">
         <Header Logotext='MicroLife'/>
