@@ -1,0 +1,12 @@
+.Announcing {
+    background-color: #caefb3;
+    margin-top: 40px;
+    border-radius: 7px;
+}
+
+.Text-announcing {
+    padding: 15px;
+    font-size: 20px;
+    color: #47802b;
+    font-weight: 700;
+}

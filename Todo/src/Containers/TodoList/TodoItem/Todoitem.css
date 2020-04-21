@@ -1,0 +1,43 @@
+li {
+    border: 2px double #eae8db;
+    /* border-bottom: none; */
+    padding: 15px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+li p {
+    cursor: pointer;
+}
+
+li p::selection{
+    background: none;
+}
+
+li div {
+    display: flex;
+}
+
+li div img {
+    width: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+li div img:nth-child(2){
+    margin-left: 20px;
+}
+
+li:hover img {
+    display: block;
+}
+
+.active {
+    text-decoration: line-through;
+}
+
+.no-active {
+    text-decoration: none;
+}
