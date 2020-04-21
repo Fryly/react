@@ -1,0 +1,18 @@
+.Header {
+    width: 100%;
+    background: #e1914c;
+}
+
+.Top-line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 15px;
+    color: #eae8db;
+}
+
+img {
+    width: 80px;
+}

@@ -1,0 +1,50 @@
+
+.TodoList h1 {
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.TodoList ul {
+    list-style: none;
+}
+
+.TodoList {
+    max-width: 880px;
+    margin: 0px auto;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.example-enter {
+    opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+@media all and (max-width : 880px) {
+    .TodoList {
+        max-width: 600px;
+    }
+}
+
+@media all and (max-width : 600px) {
+    .TodoList {
+        max-width: 310px;
+    }
+}
