@@ -1,0 +1,48 @@
+.Button {
+    border: 2px solid #ed720a;
+    padding: 15px 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: #ed720a;
+    cursor: pointer;
+    background: #f7fafd;
+}
+
+.Button:hover{
+    background: #ed720a;
+    color: #f7fafd;
+}
+
+.Button:active{
+    transform: translateY(1px);
+}
+
+svg{
+    margin: 0 10px;
+}
+
+span {
+    line-height: 19px;
+    font-size: 16px;
+}
+
+.Delimiter{
+    width: 1px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.25);
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
+.Button__cor{
+    background: #ed720a;
+    border: 1px solid transparent;
+    padding: 15px 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: #f7fafd;
+    cursor: pointer;
+}
+

@@ -1,0 +1,20 @@
+ul {
+    display: flex;
+}
+
+li {
+    padding: 13px 30px;
+    border-radius: 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    color:#2e3939;
+}
+
+.Active {
+    background: #2e3939;
+    color: #f7fafd;
+}
+

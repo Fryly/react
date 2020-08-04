@@ -1,0 +1,31 @@
+.Header {
+    padding: 40px calc(50% - 623px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header__logo{
+    display: flex;
+    align-items: center;
+}
+
+img{
+    margin-right: 20px;
+}
+
+h1 {
+    color: #2e3939;
+    font-size: 24px;
+    letter-spacing: 1%;
+    text-transform: uppercase;
+}
+
+p {
+    color: #859593;
+}
+
+a {
+    text-decoration: none;
+
+}

@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  font-family: 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+
+
+body{
+  background:#e1914c;
+  overflow-x: hidden;
+}
+
+.Wrapper {
+  background: #f7fafd;
+  max-width: 1400px;
+  margin: 30px auto;
+  border-radius: 10px;
+}
+
+.Content {
+  padding: 40px calc(50% - 633px);
+}
+
+.Content__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.Content__pizza{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+h2{
+  margin-bottom: 50px;
+}
+
+
+
+
+
+

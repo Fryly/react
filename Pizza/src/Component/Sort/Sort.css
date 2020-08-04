@@ -1,0 +1,45 @@
+.Label {
+    display: flex;
+    align-items: center;
+}
+
+.Label p {
+    margin-right: 10px;
+    color: #2e3939;
+}
+
+.Label span {
+    font-weight: 600;
+    color: #ed720a;
+    border-bottom: 1px dashed #ed720a;
+    cursor: pointer;
+}
+
+.Sort {
+    position: relative;
+}
+
+.Sort__popup{
+    position: absolute;
+    margin-top: 10px;
+    right: 0;
+    background-color: #f7fafd;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+}
+
+.Sort__popup ul{
+    flex-direction: column;
+}
+
+.Sort__popup ul li {
+    margin: 0;
+    padding: 20px 30px;
+    border-radius: 0;
+    font-weight: bold;
+}
+
+.Sort__popup ul li.Active{
+    color: #ed720a;
+    background: none;
+}
