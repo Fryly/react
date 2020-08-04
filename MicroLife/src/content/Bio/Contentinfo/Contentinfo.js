@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from './../Avatar/Avatar'
-import UserInfo from './../UserInfo/UserInfo'
+import Avatar from '../Avatar/Avatar'
+import UserInfo from '../UserInfo/UserInfo'
 
 class Contentinfo extends React.Component {
     state = {
