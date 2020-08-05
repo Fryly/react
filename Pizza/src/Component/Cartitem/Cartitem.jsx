@@ -5,10 +5,19 @@ import Plus from '../../assets/minus.png'
 import Delete from '../../assets/delet.png'
 
 
-function Cartitem( {name, type, size, totalPrice, image, totalCount, onClickRemove,id} ) {
+function Cartitem( {name, type, size, totalPrice, image, totalCount, onClickRemove, id, onMinus, onPlus} ) {
     const handleRemoveClick = () => {
         onClickRemove(id)
     }
+
+    const handleMinusClick = () => {
+        onMinus(id)
+    }
+
+    const handlePlusClick = () => {
+        onPlus(id)
+    }
+
     return (
         <div className="Content__cart-items">
                 <div className="Cart__img">
@@ -23,11 +32,11 @@ function Cartitem( {name, type, size, totalPrice, image, totalCount, onClickRemo
                     </div>
                 </div>
                 <div className="Cart__item-count">
-                        <div className="Button--outline Button--circle Cart__item-count-minus">
+                        <div className="Cart__item-count-minus" onClick={handleMinusClick}>
                             <img src={Minus} alt=""/>
                         </div>
                         <b>{totalCount}</b>
-                        <div className="Button--outline Button--circle Cart__item-count-plus">
+                        <div className="Cart__item-count-minus" onClick={handlePlusClick}>
                             <img src={Plus} alt=""/>
                         </div>
                 </div>
