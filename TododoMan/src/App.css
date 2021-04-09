@@ -1,0 +1,35 @@
+.Wrapper{
+  max-width: 800px;
+  background-color: #FFFFFF;
+  border-radius: 10px 10px 0 0;
+  margin: 20px auto;
+}
+
+
+.Content-todo{
+  display: flex;
+  width: 100%;
+  min-height: 700px;
+}
+
+.NotTodo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.No-auth{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.NotTodo h2{
+  font-size: 32px;
+  font-weight: 700;
+  color: #C9D1D3;
+}

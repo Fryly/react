@@ -1,0 +1,18 @@
+.Button{
+    background: #091d36;
+    border: none;
+    padding: 15px 50px;
+    color: #f7f7e2;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.Button:active,.Button-red:active{
+    transform: translateY(1px)
+}
+
+.Button-red{
+    background: red;
+    color: #f7f7e2;
+}

@@ -1,0 +1,14 @@
+/* .Input{
+
+} */
+
+.Input input{
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+    padding: 7px 10px;
+    width: 100%;
+}
+

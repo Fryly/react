@@ -1,0 +1,36 @@
+.Weatheritem{
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid;
+    border-image-slice: 1;
+    align-items: center;
+    border-image-source: linear-gradient(45deg, hotpink, skyblue);
+    padding: 0 40px;
+    margin-top: 30px;
+    position: relative;
+}
+
+span{
+    margin-left: 10px;
+}
+
+.Weatheritem .Summary{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.Weatheritem p{
+    font-weight: bold;
+}
+
+.Weather-icon img{
+    height: 100%;
+}
+
+.Weatheritem .Delete{
+    width: 15px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}

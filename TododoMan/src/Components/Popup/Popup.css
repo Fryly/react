@@ -1,0 +1,52 @@
+.Popup{
+    background: #fff;
+    z-index: 2;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    width: 240px;
+    position: absolute;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+.Popup .Color-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Popup .Add-folder{
+    background: #4DD599;
+    border-radius: 4px;
+    width: 100%;
+    justify-content: center;
+    color: #FFF;
+    margin: 0;
+    padding: 11px 0;
+}
+
+.Popup .Popup-close{
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    cursor: pointer;
+}
+
+.Popup-task .Button-task{
+    display: flex;
+    margin: 15px 0;
+    justify-content: space-between;
+}
+
+.Popup-task .Button-task .Add-task,.Сlose-popup_task{
+    background: #4DD599;
+    border-radius: 4px;
+    justify-content: center;
+    color: #FFF;
+    margin: 0;
+    padding: 11px 20px;
+}
+
+.Popup-task .Button-task .Сlose-popup_task{
+    color: #9C9C9C;
+    background: #F4F6F8;
+}

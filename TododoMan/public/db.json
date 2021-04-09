@@ -1,0 +1,44 @@
+{
+    "colors": [
+      {
+        "id": 0,
+        "hex": "#C9D1D3",
+        "name": "grey"
+      },
+      {
+        "id": 1,
+        "hex": "#42B883",
+        "name": "green"
+      },
+      {
+        "id": 2,
+        "hex": "#64C4ED",
+        "name": "blue"
+      },
+      {
+        "id": 3,
+        "hex": "#FFBBCC",
+        "name": "pink"
+      },
+      {
+        "id": 4,
+        "hex": "#B6E6BD",
+        "name": "lime"
+      },
+      {
+        "id": 5,
+        "hex": "#C355F5",
+        "name": "purple"
+      },
+      {
+        "id": 6,
+        "hex": "#110133",
+        "name": "black"
+      },
+      {
+        "id": 7,
+        "hex": "#FF6464",
+        "name": "red"
+      }
+    ]
+  }

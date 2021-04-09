@@ -1,0 +1,89 @@
+.Task-item{
+    margin-bottom: 20px;
+}
+
+.Task-item ul{
+    width: 100%;
+}
+
+.Task-item ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.Task-item ul li .checkbox input{
+    display: none;
+}
+
+.Task-item ul li .checkbox input:checked + label{
+    background-color: #4dd599;
+    border-color: #4dd599;
+}
+
+.Task-item ul li .checkbox input:checked + label svg{
+    opacity: 1;
+}
+
+.Task-item ul li .checkbox input:checked + label svg path{
+    stroke: #fff;
+}
+
+label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e8e8e8;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+    margin-right: 30px;
+}
+
+label svg{
+    opacity: 0;
+    margin-left: 2.4px;
+}
+
+.Task-item ul li .checkbox svg{
+    transition: opacity 0.15s ease-in-out;
+}
+
+.Task-item ul li .checkbox svg path{
+    stroke: #f2f2f2;
+}
+
+
+
+.Task-item ul li img {
+    margin-left: auto;
+}
+
+.Task-item ul li:hover label{
+    background-color: #4DD599;
+    border: 2px solid #4DD599;
+}
+
+.Task-item ul li:hover svg{
+    opacity: 1;
+}
+
+label.Active-label{
+    background-color: #4DD599;
+    border: 2px solid #4DD599;
+}
+
+svg.Active-label{
+    opacity: 1;
+}
+
+.Complited-text{
+    text-decoration: line-through;
+}

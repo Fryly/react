@@ -1,0 +1,76 @@
+.Task{
+    padding: 56px 100px;     
+}
+
+.Task .Title{
+    font-weight: bold;
+    font-size: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.Task .Title img{
+    margin-left: 14px;
+    cursor: pointer;
+}
+
+.Task .Border{
+    height: 2px;
+    margin: 20px 0 40px 0;
+    background: #F2F2F2;
+    width: 100%;
+}
+
+.Task .Button {
+    color: #767676;
+    font-size: 14px;
+}
+
+
+.Task .Button img{
+    margin: 0 37px 0 6px;
+}
+
+.Title--grey{
+    color: #c9d1d3;
+}
+
+.Title--lime{
+    color: #b6e6bd;
+}
+
+.Title--purple{
+    color: #c355f5;
+}
+
+.Title--black{
+    color: #08001a;
+}
+
+.Title--red{
+    color: #ff6464;
+}
+
+.Title--green {
+    color: #42b883;
+  }
+
+.Title--blue{
+    color: #64c4ed;
+}
+
+.Title--pink{
+    color: #ffbbcc;
+}
+
+.Full-task:first-child{
+    padding-top: 56px;
+}
+
+.Full-task:last-child{
+    padding-bottom: 56px;
+}
+
+.Full-task{
+    padding: 30px 100px 0px 100px; 
+}

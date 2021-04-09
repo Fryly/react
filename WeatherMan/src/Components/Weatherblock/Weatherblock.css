@@ -1,0 +1,16 @@
+.Weatherblock{
+    color: #f7f7e2;
+    /* padding: 40px; */
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.Weatherblock .Weatherblock-bottom{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.Weatherblock .Weatherblock-bottom .Button{
+    margin-right: 0;
+}

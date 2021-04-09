@@ -1,0 +1,27 @@
+.Weather-location{
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid;
+    border-image-slice: 1;
+    align-items: center;
+    border-image-source: linear-gradient(45deg, hotpink, skyblue);
+    padding: 0 40px;
+    position: relative;
+}
+
+span{
+    margin-left: 10px;
+}
+
+.Weather-location .Summary{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.Weather-location p{
+    font-weight: bold;
+}
+
+.Weather-location .Weather-icon img{
+    height: 100%;
+}

@@ -1,0 +1,25 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#fea405;
+    border-radius: 10px 10px 0 0;
+    padding: 20px 40px;
+}
+
+.Header h1 {
+    color: #f0ede8;
+}
+
+.Out {
+    cursor: pointer;
+}
+
+.Header .authentication a, .Out {
+    color: #f0ede8;
+    font-weight: 600;
+}
+
+.Header .authentication a:last-child {
+    margin-left: 20px;
+}

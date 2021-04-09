@@ -1,0 +1,45 @@
+.Badge{
+    background-color: #C9D1D3;
+    height: 18px;
+    width: 18px;
+    border-radius: 10px;
+    margin: 13px 0;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.Active-badge{
+    border: 2px solid #525252;
+}
+
+.Badge--grey{
+    background-color: #c9d1d3;
+}
+
+.Badge--lime{
+    background-color: #b6e6bd;
+}
+
+.Badge--purple{
+    background-color: #c355f5;
+}
+
+.Badge--black{
+    background-color: #08001a;
+}
+
+.Badge--red{
+    background-color: #ff6464;
+}
+
+.Badge--green {
+    background-color: #42b883;
+  }
+
+.Badge--blue{
+    background-color: #64c4ed;
+}
+
+.Badge--pink{
+    background-color: #ffbbcc;
+}
