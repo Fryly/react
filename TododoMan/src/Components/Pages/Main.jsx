@@ -43,14 +43,15 @@ function Main() {
           if (window.confirm('Вы действительно хотите удалить задачу')){
               const newTask = folder.map(item => {
                 if(item.id === ids){
-                  return item.tasks = item.tasks.filter((_,curInd) => curInd !== index)
+                  item.tasks = item.tasks.filter((_,curInd) => curInd !== index)
                 }
+                return item
               })
-              const newTaskFilter = newTask.filter( a => a !== undefined )
+              console.log(newTask)
               const url = `http://localhost:3001/users/deletetask/${userId}`
-                axios.put(url, {newTaskFilter, ids})
+                axios.put(url, {newTask, ids})
                   .then(({data}) => {
-                    
+                    setFolder(newTask)
                 })
           }
       }

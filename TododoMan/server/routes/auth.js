@@ -165,14 +165,12 @@ router.put('/deletefolder/:id', async (req, res) => {
 });
 
 router.put('/deletetask/:id', async (req, res) => {
-    let task = req.body.newTaskFilter[0]
     try{
         const deletetask = await User.updateOne({
             _id: req.params.id,
-            "folders.id": req.body.ids
         },{
             $set: {
-                "folders.$.tasks": task
+                folders: req.body.newTask
             }
         }
         );

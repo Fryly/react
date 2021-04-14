@@ -15,7 +15,6 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
         completed: false
     })
     const [i, setI] = useState(null)
-    const [del, setD] = useState(null)
     const ModalRef = React.useRef();
 
     const handleClickModal = (text, description, deadline, index) => {
