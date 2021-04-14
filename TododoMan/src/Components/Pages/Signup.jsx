@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { Input, Button } from '../index';
+import { useHistory } from 'react-router';
 import './Page.css'
 
 function Signup() {
@@ -13,6 +14,7 @@ function Signup() {
         password: ''
     })
     const [e, setE] = useState('')
+    const history = useHistory();
 
 
     const changeHandler = (event) => {
@@ -21,7 +23,9 @@ function Signup() {
     
     const registerHandler = () => {
         axios.post('http://localhost:3001/users/register', {...form}, headers)
-                .then((res) => {})
+                .then((res) => {
+                    history.push('/login')
+                })
                 .catch((err) => {
                     const error = err.response.data.message
                     setE(error)
