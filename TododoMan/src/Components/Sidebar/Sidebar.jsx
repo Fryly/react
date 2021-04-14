@@ -10,7 +10,6 @@ import axios from 'axios'
 function Sidebar({ folder, handleDeleteFolder, handleAddFolder, idFolder}) {
     const [visiblePopup, setVisiblePop] = React.useState(false)
     const [color,setColor] = React.useState([])
-
     const { name } = useAuth();
 
     React.useEffect(()=>{

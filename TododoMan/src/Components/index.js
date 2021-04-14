@@ -4,7 +4,7 @@ import Input from './Input/Input';
 import Popup from './Popup/Popup';
 import ListFolder from './ListFolder/ListFolder';
 import TaskItem from './TaskItem/TaskItem';
-import PopupTask from './Popup/PopupTask';
+import ModalTask from './Popup/ModalTask';
 import NotTodo from './NotTodo/NotTodo'
 import Task from './Task/Task'
 import FullTask from './Task/FullTask'
@@ -18,7 +18,7 @@ export {    Badge ,
             TaskItem, 
             Button, 
             Input, 
-            PopupTask, 
+            ModalTask, 
             NotTodo, 
             Task, 
             FullTask, 

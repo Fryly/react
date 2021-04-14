@@ -5,32 +5,44 @@ import Add from './../../assets/plus.png'
 import Edit from '../../assets/repeir.png'
 
 import { useParams } from 'react-router-dom'
-import { Button, PopupTask, TaskItem } from '../index';
+import { Button, ModalTask, TaskItem } from '../index';
 import classNames from 'classnames';
 
 
-function Task({item, handleEdit, handleDelete, handleComplite, handleAdd}) {
+function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handleEditTask}) {
 
     const [visiblePopupTask, setPopupTask] = React.useState(false)
+    const [form, setForm] = React.useState({
+        text: '',
+        description: '',
+        deadline: '',
+        completed: false  
+    })
 
     let { id } = useParams();
     let tasks = find(parseInt(id));
     let taskItems = tasks.tasks
+    const ModalRef = React.useRef();
 
     const handleVisiblePopupTask = () => {
         setPopupTask(!visiblePopupTask)
     }
 
 
-    const onAdd = (newTask) => {
-        const obj = {
-            text: newTask,
-            completed: false  
-        }
-        handleAdd(tasks.id,obj)
+    const onAdd = () => {
+        setForm({
+            text: '',
+            description: '',
+            deadline: ''
+        })
+        handleAdd(tasks.id,form)
+    }
+
+    const handleInputChange = (event) =>{
+        setForm({ ...form, [event.target.name]: event.target.value })
     }
     
-    const onDelete= (index) => {
+    const onDelete = (index) => {
         handleDelete(tasks.id,index)
     }
 
@@ -38,21 +50,40 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd}) {
         handleComplite(tasks.id,index,complite)
     }
 
-    const onClickEdit = () => {
-        const title = prompt('Исправить заголовок')
-        if(title){
+    const onClickEdit = (text) => {
+        const title = prompt('Исправить заголовок(не больше 10 символов)', text) 
+
+        if(text.length < 10 || title === null){
+            alert('Заголовок не изменен')
+        }else{
             handleEdit(tasks.id,title)
         }
+    }
+
+    const onEdit = (obj, index) => {
+        handleEditTask(obj, index, tasks.id)
     }
 
     function find(id) {
         return item.find(p => p.id === id);
     }
+
+    const handleOutsideClick = (e) => {
+        const path = e.path || (e.composedPath && e.composedPath());
+        if (!path.includes(ModalRef.current)){
+            setPopupTask(false)
+        }
+    }
+
+    React.useEffect( () => {
+        document.body.addEventListener('click', handleOutsideClick)
+    },[]);
+
     return (
         <div className="Task">
             <h1 
                 className={classNames('Title', { [`Title--${tasks.colorName}`]: tasks.colorName })}
-                onClick={onClickEdit}
+                onClick={() => onClickEdit(tasks.name)}
             >
                 {tasks.name}
                 <img src={Edit} alt="edit"/>
@@ -65,13 +96,20 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd}) {
                             items={taskItems}
                             onClickCompleted={onComplite}
                             onClickDelete={onDelete}
+                            onClickEdit={onEdit}
                           />
                 }
                 {
                     visiblePopupTask 
-                        ?   <PopupTask 
+                        ?   <ModalTask
                                 onClickClose={handleVisiblePopupTask}
                                 onAddTask={onAdd}
+                                handleInputChange={handleInputChange}
+                                ModalRef={ModalRef}
+                                text={form.text}
+                                description={form.description}
+                                deadline={form.deadline}
+                                nameText='Добавить задачу'
                             />
                         :   <Button className="Button-open" onClick={handleVisiblePopupTask}>
                                 <img src={Add} alt="ADD"/> 

@@ -1,13 +1,15 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import './Header.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 function Header( logginIn ) {
 
     const auth = useContext(AuthContext)
+    const history = useHistory();
     const logoutHendler = () => {
         auth.logout()
+        history.push('/')
     }
     return (
         <div className='Header'>

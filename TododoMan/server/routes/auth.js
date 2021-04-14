@@ -114,6 +114,8 @@ router.put('/addtask/:id', async (req, res) => {
     let task = {
         text: req.body.obj.text,
         completed: req.body.obj.completed,
+        description: req.body.obj.description,
+        deadline: req.body.obj.deadline
     }
     try{
         const addtask = await User.updateOne({
@@ -127,7 +129,21 @@ router.put('/addtask/:id', async (req, res) => {
         res.json(addtask)
     }catch(err){
         res.json({message: err})
-        console.log(err)
+    }
+});
+
+router.put('/edittask/:id', async (req, res) => {
+    try{
+        const edittask = await User.findOne({
+            _id: req.params.id,
+        },(err, user) => {
+            const f = user.folders.find((i) => i.id === req.body.ids)
+            f.tasks[req.body.index] = req.body.obj
+            user.save()
+        })
+        res.json(edittask)
+    }catch(err){
+        res.json({message: err})
     }
 });
 
@@ -166,23 +182,23 @@ router.put('/deletetask/:id', async (req, res) => {
     }
 });
 
-router.put('/complite/:id', async (req, res) => {
-    let task = req.body.newTaskFilter[0]
-    try{
-        const complite = await User.updateOne({
-            _id: req.params.id,
-            "folders.id": req.body.ids
-        },{
-            $set: {
-                "folders.$.tasks": task
-            }
-        }
-        );
-        res.json(complite)
-    }catch(err){
-        res.json({message: err})
-    }
-});
+// router.put('/complite/:id', async (req, res) => {
+//     let task = req.body.newTaskFilter[0]
+//     try{
+//         const complite = await User.updateOne({
+//             _id: req.params.id,
+//             "folders.id": req.body.ids
+//         },{
+//             $set: {
+//                 "folders.$.tasks": task
+//             }
+//         }
+//         );
+//         res.json(complite)
+//     }catch(err){
+//         res.json({message: err})
+//     }
+// });
 
 
 module.exports = router

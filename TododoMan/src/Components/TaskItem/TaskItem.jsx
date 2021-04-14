@@ -1,18 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './TaskItem.css'
 import Del from '../../assets/del.png'
+import Rep from '../../assets/repeir.png'
+import { ModalTask } from '..'
 
-function TaskItem({items, onClickDelete, onClickCompleted}) {
+function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
+
+    const [visibleModal, setModal] = useState(false)
+    const [openDescription, setDescription] = useState([])
+    const [editing, setEditing] = useState({
+        text: '',
+        description: '',
+        deadline: '',
+        completed: false
+    })
+    const [i, setI] = useState(null)
+    const [del, setD] = useState(null)
+    const ModalRef = React.useRef();
+
+    const handleClickModal = (text, description, deadline, index) => {
+        setEditing({
+            text,
+            description,
+            deadline,
+        })
+        setI(index)
+        setModal(!visibleModal)
+    }
+
+    const handleInputChange = (event) =>{
+        setEditing({ ...editing, [event.target.name]: event.target.value })
+    }
+
+    const handleClickEdit = () => {
+        onClickEdit(editing, i)
+    }
+
+    const handleClickDescription = (name) => { 
+        setDescription([...openDescription, name])
+        if ( openDescription.includes(name) ){
+            let open = openDescription.filter(item =>  item !== name );
+            setDescription(open)
+        }
+    }
+
+    const handleOutsideClick = (e) => {
+        const path = e.path || (e.composedPath && e.composedPath());
+        if (!path.includes(ModalRef.current)){
+            setModal(false)
+        }
+    }
+
+
+    React.useEffect( () => {
+        document.body.addEventListener('click', handleOutsideClick)
+    },[]);
 
     return (
-        <div className="Task-item">
-            <ul>
+        <div className="Task-block">
                 {
                     items.map((item,index)=>(
-                            <li
+                            <div
                                 key={index}
-                                onClick={()=>{onClickCompleted(index,item.completed)}}
-                                className={item.completed ? "Complited-text" : ''}
+                                className="Task-item"
                             >
                                 <div className="checkbox">
                                     <input
@@ -37,16 +87,52 @@ function TaskItem({items, onClickDelete, onClickCompleted}) {
                                         />
                                     </svg>
                                     </label>
+                                    <span 
+                                        className={item.completed ? "Complited-text" : ""}
+                                        onClick={() => {onClickCompleted(index,item.completed)}}
+                                    >
+                                        {item.text}
+                                    </span>
                                 </div>
-                                {item.text}
-                                <img src={Del} alt="del" 
-                                    onClick={() => {onClickDelete(index)}}
-                                />
-                            </li>
+                                <div className="Task-item__tools">
+                                    <img src={Rep} alt="rep"
+                                        onClick={() => handleClickModal(item.text, item.description, item.deadline, index)}
+                                    />
+                                    
+                                    <img className="del" src={Del} alt="del" 
+                                        onClick={() => onClickDelete(index)}
+                                    />
+                                </div>
+                                <div className="Task-item__description">
+                                    <span onClick={() => handleClickDescription(item.text)}>Подробнее</span>
+                                    {
+                                        openDescription.includes(item.text) 
+                                        ?
+                                            <ul className="Description">
+                                                <li><span>Описание:</span> {item.description}</li>
+                                                <li><span>Дедлайн:</span> {item.deadline}</li>
+                                            </ul>
+                                        : null
+                                    }
+                                </div>
+                            </div>
                     ))
                 }
-            </ul>
+                {
+                    visibleModal &&
+                        <ModalTask 
+                            onClickClose={handleClickModal}
+                            ModalRef={ModalRef}
+                            nameText='Редактировать задачу'
+                            handleInputChange={handleInputChange}
+                            text={editing.text}
+                            description={editing.description}
+                            deadline={editing.deadline}
+                            onAddTask={handleClickEdit}
+                        />
+                }
         </div>
+        
     )
 }
 

@@ -13,26 +13,24 @@ import { AuthContext } from './context/AuthContext';
 
 function App() {
 
-const { token, login, logout, userId, name } = useAuth();
-const isAuthenticated = !!token
-
+const { token, login, logout, userId, name, isLoad } = useAuth();
   return (
     <AuthContext.Provider value={{
-      token, login, logout, userId, name, isAuthenticated
+      token, login, logout, userId, name, isLoad
     }}>
       <div className="App">
         <div className="Wrapper">
-          <Header logginIn={isAuthenticated} />
+          <Header logginIn={isLoad} />
           <div className="Content-todo">
             {
-              isAuthenticated &&
+              isLoad &&
               <Switch>
                 <Route path='/main' component={Main}/>
                 <Redirect to='/main' />
               </Switch>
             }
             {
-              !isAuthenticated &&
+              !isLoad &&
               <Switch>
                 <Route path='/' exact>
                   <div className="No-auth" >Please log in</div>

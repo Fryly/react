@@ -32,9 +32,9 @@
 
 .List-folder ul li img{
     position: absolute;
-    top: 40%;
-    right: 10px;
-    
+    top: 50%;
+    transform: translate(-50%,-50%);
+    right: 0px;
 }
 
 .List-folder ul li:hover{

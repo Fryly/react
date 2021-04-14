@@ -37,6 +37,14 @@ const userSchema = new mongoose.Schema({
                     completed: {
                         type: Boolean,
                         require: true,
+                    },
+                    description: {
+                        type: String,
+                        require: true,
+                    },
+                    deadline: {
+                        type: String,
+                        require: true,
                     }
                 }
             ]

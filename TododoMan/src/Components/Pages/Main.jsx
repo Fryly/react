@@ -9,16 +9,15 @@ function Main() {
       const hist = useHistory()
       const [folder, setFolder] = React.useState([])
       const [idFolder, setId] = React.useState(null)
-      const { userId } = useAuth()
-
+      const { userId, isLoad } = useAuth()
       React.useEffect( () => {
-
-        const url = `http://localhost:3001/users/${userId}`
-        axios.get(url)
-           .then(({data}) => {
-              setFolder(data.folders)
-          })
-
+        if (isLoad){
+          const url = `http://localhost:3001/users/${userId}`
+          axios.get(url)
+            .then(({data}) => {
+                setFolder(data.folders)
+            })
+        }
       },[userId])
 
       React.useEffect(() => {
@@ -49,9 +48,10 @@ function Main() {
               })
               const newTaskFilter = newTask.filter( a => a !== undefined )
               const url = `http://localhost:3001/users/deletetask/${userId}`
-              axios.put(url, {newTaskFilter, ids})
-                .then(({data}) => {
-              })
+                axios.put(url, {newTaskFilter, ids})
+                  .then(({data}) => {
+                    
+                })
           }
       }
       
@@ -105,6 +105,26 @@ function Main() {
         setFolder(newComnlit)
       }
 
+      const handleEditTask = (obj, index, ids) => {
+        const editTask = folder.map( item => {
+          if(item.id === ids){
+            item.tasks = item.tasks.map( (task, curInd) => {
+              if(curInd === index){
+                task = obj
+              }
+              return task
+            })
+          }
+          return item
+        })
+        console.log(editTask)
+        const url = `http://localhost:3001/users/edittask/${userId}`
+        axios.put(url, {ids, obj, index})
+            .then(({data}) => {
+              setFolder(editTask)
+          })
+      }
+
     return (
         <>
             <Sidebar  
@@ -120,6 +140,7 @@ function Main() {
                 handleDeleteTask={handleDeleteTask}
                 handleCompliteTask={handleCompliteTask}
                 handleAddTask={handleAddTask}
+                handleEditTask={handleEditTask}
               />
         </>
     )

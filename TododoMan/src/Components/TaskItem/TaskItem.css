@@ -1,35 +1,66 @@
-.Task-item{
+.Task-block{
     margin-bottom: 20px;
-}
-
-.Task-item ul{
     width: 100%;
 }
 
-.Task-item ul li{
+.Task-block .Task-item{
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
     font-weight: 500;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.Task-block .Task-item .del{
+    margin-left: 30px;
+}
+
+.Task-block .Task-item .checkbox{
+    flex: 1 1 439px;
+    cursor: pointer;
+    display: flex;
+}
+
+.Task-block .Task-item .Task-item__tools{
+    flex: 1 1 60px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Task-block .Task-item .Task-item__description{
+    margin-top: 10px;
+    flex: 1 0 100%;
+    color: #767676;
+    font-size: 14px;
+    
+}
+
+.Task-block .Task-item .Task-item__description span{
     cursor: pointer;
 }
 
-.Task-item ul li .checkbox input{
+.Task-block .Task-item .checkbox span{
+    flex: 1;
+    display: block;
+}
+
+.Task-block .Task-item .checkbox input{
     display: none;
 }
 
-.Task-item ul li .checkbox input:checked + label{
+.Task-block .Task-item .checkbox input:checked + label{
     background-color: #4dd599;
     border-color: #4dd599;
 }
 
-.Task-item ul li .checkbox input:checked + label svg{
+.Task-block .Task-item .checkbox input:checked + label svg{
     opacity: 1;
 }
 
-.Task-item ul li .checkbox input:checked + label svg path{
+.Task-block .Task-item .checkbox input:checked + label svg path{
     stroke: #fff;
 }
 
@@ -52,26 +83,26 @@ label svg{
     margin-left: 2.4px;
 }
 
-.Task-item ul li .checkbox svg{
+.Task-block .Task-item .checkbox svg{
     transition: opacity 0.15s ease-in-out;
 }
 
-.Task-item ul li .checkbox svg path{
+.Task-block .Task-item .checkbox svg path{
     stroke: #f2f2f2;
 }
 
 
 
-.Task-item ul li img {
-    margin-left: auto;
+.Task-block .Task-item img {
+    cursor: pointer;
 }
 
-.Task-item ul li:hover label{
+.Task-block .Task-item .checkbox:hover label{
     background-color: #4DD599;
     border: 2px solid #4DD599;
 }
 
-.Task-item ul li:hover svg{
+.Task-block .Task-item .checkbox:hover svg{
     opacity: 1;
 }
 
@@ -86,4 +117,13 @@ svg.Active-label{
 
 .Complited-text{
     text-decoration: line-through;
+}
+
+.Task-block .Task-item .Task-item__description .Description li:first-child{
+    margin: 5px 0;
+}
+
+.Task-block .Task-item .Task-item__description .Description li span{
+    color: #000;
+    font-size: 16px;
 }

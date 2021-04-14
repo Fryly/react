@@ -4,7 +4,7 @@ import './TodoTask.css'
 import { Route, Switch} from 'react-router-dom'
 import { NotTodo, Task, FullTask } from '../index';
 
-function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask, handleAddTask} ) {
+function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask, handleAddTask, handleEditTask} ) {
     return (
         <div className="Todo-task">
             <>
@@ -35,6 +35,7 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                         handleDelete={handleDeleteTask}
                         handleComplite={handleCompliteTask}
                         handleAdd={handleAddTask}
+                        handleEditTask={handleEditTask}
                     />
                 </Route>
             </Switch>
