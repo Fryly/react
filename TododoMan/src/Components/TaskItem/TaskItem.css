@@ -40,6 +40,7 @@
 
 .Task-block .Task-item .Task-item__description span{
     cursor: pointer;
+    user-select: none
 }
 
 .Task-block .Task-item .checkbox span{
@@ -117,13 +118,4 @@ svg.Active-label{
 
 .Complited-text{
     text-decoration: line-through;
-}
-
-.Task-block .Task-item .Task-item__description .Description li:first-child{
-    margin: 5px 0;
-}
-
-.Task-block .Task-item .Task-item__description .Description li span{
-    color: #000;
-    font-size: 16px;
 }

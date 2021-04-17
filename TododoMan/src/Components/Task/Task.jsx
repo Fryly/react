@@ -53,9 +53,10 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
     const onClickEdit = (text) => {
         const title = prompt('Исправить заголовок(не больше 10 символов)', text) 
 
-        if(text.length < 10 || title === null){
+        if( title === null || title.length > 10){
             alert('Заголовок не изменен')
         }else{
+            alert(`Заголовок изменен на ${title}`)
             handleEdit(tasks.id,title)
         }
     }
@@ -83,10 +84,9 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
         <div className="Task">
             <h1 
                 className={classNames('Title', { [`Title--${tasks.colorName}`]: tasks.colorName })}
-                onClick={() => onClickEdit(tasks.name)}
             >
                 {tasks.name}
-                <img src={Edit} alt="edit"/>
+                <img onClick={() => onClickEdit(tasks.name)} src={Edit} alt="edit"/>
             </h1>
             <div className="Border"></div>
                 {

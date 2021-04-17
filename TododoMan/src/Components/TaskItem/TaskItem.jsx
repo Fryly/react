@@ -3,6 +3,7 @@ import './TaskItem.css'
 import Del from '../../assets/del.png'
 import Rep from '../../assets/repeir.png'
 import { ModalTask } from '..'
+import Description from '../Description/Description'
 
 function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
 
@@ -107,10 +108,10 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
                                     {
                                         openDescription.includes(item.text) 
                                         ?
-                                            <ul className="Description">
-                                                <li><span>Описание:</span> {item.description}</li>
-                                                <li><span>Дедлайн:</span> {item.deadline}</li>
-                                            </ul>
+                                            <Description 
+                                                description={item.description}
+                                                deadline={item.deadline}
+                                            />
                                         : null
                                     }
                                 </div>

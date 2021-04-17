@@ -1,0 +1,16 @@
+.Description li:first-child{
+    margin: 5px 0;
+}
+
+.Description li span{
+    color: #000;
+    font-size: 16px;
+}
+
+.Description li a{
+    color: blue;
+}
+
+.Description li a:hover{
+    text-decoration: underline;
+}
