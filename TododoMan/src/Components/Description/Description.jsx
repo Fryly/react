@@ -4,9 +4,8 @@ import './Description.css'
 function Description({ description, deadline }) {
     const res = []
     const pattern = /((?:https?:\/\/|ftps?:\/\/|\bwww\.)(?:(?![.,?!;:()]*(?:\s|$))[^\s]){2,})|(\n+|(?:(?!(?:https?:\/\/|ftp:\/\/|\bwww\.)(?:(?![.,?!;:()]*(?:\s|$))[^\s]){2,}).)+)(([a-z\-]+))/gim;
-
-    description && description.replace(pattern, (_, link, text) => {
-        console.log(link, text)
+    // ^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
+    description && description.replace(pattern, (s, link, text) => {
         res.push(link ? <a href={(link[0]==="w" ? "https://" : "") + link} key={res.length}>{link}</a> : text)
     })
 

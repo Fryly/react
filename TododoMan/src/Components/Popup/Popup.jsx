@@ -32,7 +32,9 @@ function Popup({ClosePopUp, setClosePopUp, onClickAdd, colorItem}) {
         if(text){
             onClickAdd(text,colorBadge)
             setText('')
+            
         }
+        alert(`Папка ${text} добавлена`)
     }
 
     return (

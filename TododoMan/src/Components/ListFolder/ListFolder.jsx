@@ -35,7 +35,7 @@ function ListFolder({ items, onClickDelete }) {
                                     />
                                     {item.name}
                                 </NavLink>
-                                <img src={Del} alt="del" onClick={() => {onClickDelete(item.id)}}/>
+                                <img src={Del} alt="del" onClick={() => {onClickDelete(item.id,item.name)}}/>
                             </li>
                     ))
                 }

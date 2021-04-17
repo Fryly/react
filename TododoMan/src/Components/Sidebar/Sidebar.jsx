@@ -29,7 +29,6 @@ function Sidebar({ folder, handleDeleteFolder, handleAddFolder, idFolder}) {
             colorName: addColor,
             tasks: []
         } 
-        console.log(addColor)
         handleAddFolder(obj)
     }
     

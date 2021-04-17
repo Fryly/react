@@ -33,7 +33,9 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
     }
 
     const handleClickEdit = () => {
+        alert(`Задача была отредактирована`)
         onClickEdit(editing, i)
+        setModal(false)
     }
 
     const handleClickDescription = (name) => { 

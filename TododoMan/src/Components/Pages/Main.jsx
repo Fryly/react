@@ -56,7 +56,7 @@ function Main() {
           }
       }
       
-      const handleDeleteFolder = (ids) => {
+      const handleDeleteFolder = (ids, text) => {
         if (window.confirm('Вы действительно хотите удалить папку')){
             const newFolder = folder.filter(item =>  item.id !== ids );
             const url = `http://localhost:3001/users/deletefolder/${userId}`
@@ -66,6 +66,7 @@ function Main() {
                 hist.push('/main')
               })
         }
+        alert(`Папка ${text} удалена`)
       }
       
       const handleAddTask = (ids,obj) => {
