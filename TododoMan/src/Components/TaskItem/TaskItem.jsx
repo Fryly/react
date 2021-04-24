@@ -106,7 +106,7 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
                                     />
                                 </div>
                                 <div className="Task-item__description">
-                                    <span onClick={() => handleClickDescription(item.text)}>Подробнее</span>
+                                    <span className="description-text" onClick={() => handleClickDescription(item.text)}>Подробнее</span>
                                     {
                                         openDescription.includes(item.text) 
                                         ?

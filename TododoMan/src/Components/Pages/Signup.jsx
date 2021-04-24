@@ -1,36 +1,32 @@
-import React, {useState} from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 import { Input, Button } from '../index';
-import { useHistory } from 'react-router';
 import './Page.css'
+import { useHistory } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux'
+import { featchRegister} from '../../redux/actions/users'
+
+
 
 function Signup() {
 
     const headers = {
         'Content-Type': 'application/json',
     }
+    const dispatch = useDispatch();
+    const { error } = useSelector(( { users } ) => users)
     const [form, setForm] = useState({
         name: '',
         password: ''
     })
-    const [e, setE] = useState('')
     const history = useHistory();
 
-
-    const changeHandler = (event) => {
+    const changeHandler = ( event ) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
-    
+
     const registerHandler = () => {
-        axios.post('http://localhost:3001/users/register', {...form}, headers)
-                .then((res) => {
-                    history.push('/login')
-                })
-                .catch((err) => {
-                    const error = err.response.data.message
-                    setE(error)
-                })
-        }
+        dispatch(featchRegister( form, headers, history ))
+    }   
 
     return (
         <div className="singup">
@@ -45,9 +41,9 @@ function Signup() {
                     Singup
                 </Button>
                 {
-                    e &&
+                    error &&
                     <div className='Error'>
-                        {e}
+                        {error}
                     </div>
                 }
             </div>

@@ -38,7 +38,7 @@
     
 }
 
-.Task-block .Task-item .Task-item__description span{
+.Task-block .Task-item .Task-item__description .description-text{
     cursor: pointer;
     user-select: none
 }

@@ -2,13 +2,18 @@
     margin: 5px 0;
 }
 
-.Description li span{
+.Description li{
     color: #000;
     font-size: 16px;
 }
 
+.Description li span{
+    margin-right: 3px;
+}
+
 .Description li a{
     color: blue;
+    padding-left: 2px;
 }
 
 .Description li a:hover{

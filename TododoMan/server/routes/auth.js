@@ -75,7 +75,7 @@ router.get('/:id', async (req, res) => {
 
 router.patch('/changetitle/:id', async (req, res) => {
     try{
-        const changetitle = await User.updateOne({
+        const changetitle = await User.findOneAndUpdate({
             _id: req.params.id,
             "folders.id": req.body.ids
         },{
@@ -83,7 +83,8 @@ router.patch('/changetitle/:id', async (req, res) => {
                 "folders.$.name": req.body.name
             }
         });
-        res.json(changetitle)
+        const savechangetitle = await changetitle.save();
+        res.json(savechangetitle)
     }catch(err){
         res.json({message: err})
     }
@@ -97,14 +98,15 @@ router.put('/addfolder/:id', async (req, res) => {
         tasks: req.body.tasks
     }
     try{
-        const addfolder = await User.updateOne({
+        const addfolder = await User.findOneAndUpdate({
             _id: req.params.id
         },{
             $push: {
                 folders: folder
             }
         });
-        res.json(addfolder)
+        const saveaddfolder = await addfolder.save();
+        res.json(saveaddfolder);
     }catch(err){
         res.json({message: err})
     }
@@ -118,7 +120,7 @@ router.put('/addtask/:id', async (req, res) => {
         deadline: req.body.obj.deadline
     }
     try{
-        const addtask = await User.updateOne({
+        const addtask = await User.findOneAndUpdate({
             _id: req.params.id,
             "folders.id": req.body.ids
         },{
@@ -126,7 +128,8 @@ router.put('/addtask/:id', async (req, res) => {
                 "folders.$.tasks": task
             }
         });
-        res.json(addtask)
+        const saveaddtask = await addtask.save();
+        res.json(saveaddtask)
     }catch(err){
         res.json({message: err})
     }
@@ -150,7 +153,7 @@ router.put('/edittask/:id', async (req, res) => {
 router.put('/deletefolder/:id', async (req, res) => {
     let folder = req.body
     try{
-        const deletefolder = await User.updateOne({
+        const deletefolder = await User.findOneAndUpdate({
             _id: req.params.id,
         },{
             $set: {
@@ -158,7 +161,8 @@ router.put('/deletefolder/:id', async (req, res) => {
             }
         }
         );
-        res.json(deletefolder)
+        const savedeletefolder = await deletefolder.save();
+        res.json(savedeletefolder)
     }catch(err){
         res.json({message: err})
     }
@@ -166,7 +170,7 @@ router.put('/deletefolder/:id', async (req, res) => {
 
 router.put('/deletetask/:id', async (req, res) => {
     try{
-        const deletetask = await User.updateOne({
+        const deletetask = await User.findOneAndUpdate({
             _id: req.params.id,
         },{
             $set: {
@@ -174,29 +178,12 @@ router.put('/deletetask/:id', async (req, res) => {
             }
         }
         );
-        res.json(deletetask)
+        const savedeletetask = await deletetask.save();
+        res.json(savedeletetask)
     }catch(err){
         res.json({message: err})
     }
 });
-
-// router.put('/complite/:id', async (req, res) => {
-//     let task = req.body.newTaskFilter[0]
-//     try{
-//         const complite = await User.updateOne({
-//             _id: req.params.id,
-//             "folders.id": req.body.ids
-//         },{
-//             $set: {
-//                 "folders.$.tasks": task
-//             }
-//         }
-//         );
-//         res.json(complite)
-//     }catch(err){
-//         res.json({message: err})
-//     }
-// });
 
 
 module.exports = router

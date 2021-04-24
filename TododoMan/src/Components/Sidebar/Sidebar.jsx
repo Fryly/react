@@ -3,19 +3,19 @@ import './Sidebar.css'
 import Add from './../../assets/plus.png'
 import { ListFolder, Popup, Button } from '../index';
 import { useAuth } from '../../hooks/auth.hook';
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { featchColor } from '../../redux/actions/color'
 
 
 
 function Sidebar({ folder, handleDeleteFolder, handleAddFolder, idFolder}) {
+    const dispatch = useDispatch();
     const [visiblePopup, setVisiblePop] = React.useState(false)
-    const [color,setColor] = React.useState([])
     const { name } = useAuth();
+    const { color } = useSelector(( { color } ) => color );
 
     React.useEffect(()=>{
-        axios.get('http://localhost:3001/colors').then(({data}) => {
-            setColor(data[0].colors)
-        })
+        dispatch(featchColor())
     },[])
 
     const handlePopup = () => {

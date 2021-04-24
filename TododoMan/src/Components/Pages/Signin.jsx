@@ -1,7 +1,8 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { AuthContext } from '../../context/AuthContext'
-import axios from 'axios'
 import { Input, Button } from '../index';
+import { featchLogin } from '../../redux/actions/users'
+import { useSelector, useDispatch } from 'react-redux'
 import './Page.css'
 
 function Signin() {
@@ -9,8 +10,9 @@ function Signin() {
         name: '',
         password: ''
     })
-    const [e, setE] = useState('')
-
+    const dispatch = useDispatch();
+    const { error, token } = useSelector(( { users } ) => users)
+    const authFlag = !!token
     const auth = useContext(AuthContext)
 
     const changeHandler = (event) => {
@@ -18,16 +20,14 @@ function Signin() {
     }
 
     const loginHandler = () => {
-        axios.post('http://localhost:3001/users/login', {...form})
-                .then(({data}) => {
-                    auth.login(data.token)
-                })
-                .catch(err => {
-                    const error = err.response.data.message
-                    setE(error)
-                })
+        dispatch(featchLogin(form))
+    }
+    
+    useEffect( () => {
+        if( authFlag ){
+            auth.login(token.token)
         }
-
+      },[authFlag])
 
     return (
         <div className="singin">
@@ -42,9 +42,9 @@ function Signin() {
                     Singin
                 </Button>
                 {
-                    e &&
+                    error &&
                     <div className='Error'>
-                        {e}
+                        {error}
                     </div>
                 }
             </div>

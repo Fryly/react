@@ -2,18 +2,30 @@ import React from 'react'
 import './Description.css'
 
 function Description({ description, deadline }) {
-    const res = []
-    const pattern = /((?:https?:\/\/|ftps?:\/\/|\bwww\.)(?:(?![.,?!;:()]*(?:\s|$))[^\s]){2,})|(\n+|(?:(?!(?:https?:\/\/|ftp:\/\/|\bwww\.)(?:(?![.,?!;:()]*(?:\s|$))[^\s]){2,}).)+)(([a-z\-]+))/gim;
-    // ^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
-    description && description.replace(pattern, (s, link, text) => {
-        res.push(link ? <a href={(link[0]==="w" ? "https://" : "") + link} key={res.length}>{link}</a> : text)
-    })
+    const res = [];
+    function validURL(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ 
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ 
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ 
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ 
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ 
+          '(\\#[-a-z\\d_]*)?$','i');
+        let massStr = str.split(' ').map(item => {
+            if(!!pattern.test(item)){
+                res.push(<a href={item[0] !== 'h' ? `https://${item}` : `${item}`} key={res.length}>{item}</a>)
+            }else{
+                res.push(` ${item}`)
+            }
+            return item
+        })
+        return massStr
+    }
+    validURL(description)
 
-    
     return (
         <ul className="Description">
-            <li><span>Описание:</span> {res}</li>
-            <li><span>Дедлайн:</span> {deadline}</li>
+            <li><span>Описание:</span>{res}</li>
+            <li><span>Дедлайн:</span>{deadline}</li>
         </ul>
     )
 }

@@ -33,11 +33,13 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
         setForm({
             text: '',
             description: '',
-            deadline: ''
+            deadline: '',
+            completed: false
         })
         handleAdd(tasks.id,form)
         alert(`Задача была добавлена`)
         setPopupTask(false)
+        console.log(form)
     }
 
     const handleInputChange = (event) =>{
