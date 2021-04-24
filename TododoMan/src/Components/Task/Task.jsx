@@ -39,7 +39,6 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
         handleAdd(tasks.id,form)
         alert(`Задача была добавлена`)
         setPopupTask(false)
-        console.log(form)
     }
 
     const handleInputChange = (event) =>{

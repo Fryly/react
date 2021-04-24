@@ -16,7 +16,7 @@ function Sidebar({ folder, handleDeleteFolder, handleAddFolder, idFolder}) {
 
     React.useEffect(()=>{
         dispatch(featchColor())
-    },[])
+    },[dispatch])
 
     const handlePopup = () => {
         setVisiblePop(!visiblePopup)

@@ -27,7 +27,7 @@ function Main() {
           const url = `http://localhost:3001/users/${userId}`
           dispatch(featchFolders(url))
         }
-      },[userId])
+      },[userId, isLoad, dispatch])
 
       React.useEffect(() => {
         const id = folder.length > 0 ? Math.max(...folder.map(fol => fol.id)) + 1 : 1

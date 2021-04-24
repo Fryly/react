@@ -4,7 +4,6 @@ import jwt from "jwt-decode";
 const storageName = 'auth-token'
 
 export const useAuth = () => {
-    const [token, setToken] = useState(null);
     const [userId, setUserId] = useState('');
     const [name, setName] = useState('');
     const [isLoad, setLoad] = useState(false);
@@ -14,7 +13,6 @@ export const useAuth = () => {
             data: jwt(jwtToken),
             token: jwtToken
         }
-        setToken(data.token)
         setName(data.data.name)
         setUserId(id)
         localStorage.setItem(storageName, JSON.stringify(data))
@@ -22,7 +20,6 @@ export const useAuth = () => {
     }, [])
 
     const logout = useCallback( () => {
-        setToken(null)
         setUserId(null)
         setName(null)
         setLoad(false)
@@ -37,5 +34,5 @@ export const useAuth = () => {
         }
     }, [login])
 
-    return { token, login, logout, userId, name, isLoad }
+    return { login, logout, userId, name, isLoad }
 }

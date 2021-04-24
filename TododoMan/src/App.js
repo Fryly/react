@@ -12,10 +12,10 @@ import { AuthContext } from './context/AuthContext';
 
 
 function App() {
-const { token, login, logout, userId, name, isLoad } = useAuth();
+const { login, logout, userId, name, isLoad } = useAuth();
   return (
     <AuthContext.Provider value={{
-      token, login, logout, userId, name
+      login, logout, userId, name
     }}>
       <div className="App">
         <div className="Wrapper">

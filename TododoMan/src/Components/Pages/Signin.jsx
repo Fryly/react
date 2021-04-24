@@ -13,7 +13,7 @@ function Signin() {
     const dispatch = useDispatch();
     const { error, token } = useSelector(( { users } ) => users)
     const authFlag = !!token
-    const auth = useContext(AuthContext)
+    const auth = useContext(AuthContext) 
 
     const changeHandler = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -27,7 +27,7 @@ function Signin() {
         if( authFlag ){
             auth.login(token.token)
         }
-      },[authFlag])
+      },[authFlag, auth, token.token])
 
     return (
         <div className="singin">
