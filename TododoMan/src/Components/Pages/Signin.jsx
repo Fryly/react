@@ -1,23 +1,16 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { Input, Button } from '../index';
 import { featchLogin } from '../../redux/actions/users'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useForm } from '../../hooks/form.hook';
 import './Page.css'
 
 function Signin() {
-    const [form, setForm] = useState({
-        name: '',
-        password: ''
-    })
     const dispatch = useDispatch();
-    const { error, token } = useSelector(( { users } ) => users)
+    const { form, changeHandler, error, token } = useForm();
     const authFlag = !!token
     const auth = useContext(AuthContext) 
-
-    const changeHandler = (event) => {
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
 
     const loginHandler = () => {
         dispatch(featchLogin(form))
@@ -25,14 +18,14 @@ function Signin() {
     
     useEffect( () => {
         if( authFlag ){
-            auth.login(token.token)
+            auth.login(token)
         }
-      },[authFlag, auth, token.token])
+      },[authFlag, auth, token])
 
     return (
         <div className="singin">
             <div className="form">
-                <h2>Singin</h2>
+                <h2>Signin</h2>
                 <Input type='text' placeholder='Name' name='name' onValueFolder={changeHandler}/>
                 <Input type='password' placeholder='Password' name='password' onValueFolder={changeHandler}/>
                 <Button 

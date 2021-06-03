@@ -32,6 +32,7 @@ export const featchRegister = ( form, headers, history ) => ( dispatch ) => {
     axios.post('http://localhost:3001/users/register', {...form}, headers)
                 .then((res) => {
                     alert('Спасибо за регистрацию')
+                    dispatch( setError('') )
                     history.push('/login')
                 })
                 .catch((err) => {
@@ -43,7 +44,7 @@ export const featchRegister = ( form, headers, history ) => ( dispatch ) => {
 export const featchLogin = ( form ) => ( dispatch ) => {
         axios.post('http://localhost:3001/users/login', {...form})
                 .then(({data}) => {
-                    dispatch( setToken(data) )
+                    dispatch( setToken(data.token) )
                 })
                 .catch(err => {
                     const error = err.response.data.message

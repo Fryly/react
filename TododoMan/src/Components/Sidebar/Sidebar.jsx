@@ -1,10 +1,14 @@
 import React from 'react'
 import './Sidebar.css'
 import Add from './../../assets/plus.png'
+import Calendar from './../../assets/Calendar.png'
 import { ListFolder, Popup, Button } from '../index';
 import { useAuth } from '../../hooks/auth.hook';
+
 import { useDispatch, useSelector } from 'react-redux'
 import { featchColor } from '../../redux/actions/color'
+
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -59,7 +63,12 @@ function Sidebar({ folder, handleDeleteFolder, handleAddFolder, idFolder}) {
                             colorItem={color}
                         />
                 }
+                
             </div>
+            <NavLink to='/main/calendar' activeClassName="Active-folder" className='Sidebar-calendar'>
+                <img src={Calendar} alt="calendar"/>
+                Календарь
+            </NavLink>
         </div>
     )
 }

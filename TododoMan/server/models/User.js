@@ -45,6 +45,10 @@ const userSchema = new mongoose.Schema({
                     deadline: {
                         type: String,
                         require: true,
+                    },
+                    date: {
+                        type: String,
+                        require: true,
                     }
                 }
             ]

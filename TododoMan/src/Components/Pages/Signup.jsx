@@ -1,28 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input, Button } from '../index';
 import './Page.css'
 import { useHistory } from 'react-router';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { featchRegister} from '../../redux/actions/users'
+import { useForm } from '../../hooks/form.hook';
 
 
 
 function Signup() {
 
-    const headers = {
-        'Content-Type': 'application/json',
-    }
+    const headers = { 'Content-Type': 'application/json' }
     const dispatch = useDispatch();
-    const { error } = useSelector(( { users } ) => users)
-    const [form, setForm] = useState({
-        name: '',
-        password: ''
-    })
     const history = useHistory();
-
-    const changeHandler = ( event ) => {
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
+    const { form, changeHandler, error } = useForm();
 
     const registerHandler = () => {
         dispatch(featchRegister( form, headers, history ))
@@ -31,7 +22,7 @@ function Signup() {
     return (
         <div className="singup">
             <div className="form">
-                <h2>Singup</h2>
+                <h2>Signup</h2>
                 <Input type='text' placeholder='Name' name='name' onValueFolder={changeHandler}/>
                 <Input type='password' placeholder='Password' name='password' onValueFolder={changeHandler}/>
                 <Button 

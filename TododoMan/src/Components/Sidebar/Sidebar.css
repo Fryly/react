@@ -31,3 +31,23 @@
     padding: 0 12px;
 }
 
+
+.Todo-sidebar .Sidebar-calendar{
+    color: #000;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.Todo-sidebar .Sidebar-calendar:hover{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+
+.Todo-sidebar .Sidebar-calendar img{
+    width: 25px;
+    margin: 0 10px 0 0;
+}

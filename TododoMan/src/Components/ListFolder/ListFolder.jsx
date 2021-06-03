@@ -39,7 +39,7 @@ function ListFolder({ items, onClickDelete }) {
                             </li>
                     ))
                 }
-            </ul> 
+            </ul>
         </div>
     )
 }

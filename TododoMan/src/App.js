@@ -7,12 +7,15 @@ import Main from './Components/Pages/Main';
 import Signup from './Components/Pages/Signup';
 import Signin from './Components/Pages/Signin';
 import { useAuth } from './hooks/auth.hook';
+import { useForm } from './hooks/form.hook';
 import { AuthContext } from './context/AuthContext';
+import { FormContext } from './context/FormContext';
 
 
 
 function App() {
 const { login, logout, userId, name, isLoad } = useAuth();
+const { error } = useForm();
   return (
     <AuthContext.Provider value={{
       login, logout, userId, name
@@ -34,8 +37,12 @@ const { login, logout, userId, name, isLoad } = useAuth();
                 <Route path='/' exact>
                   <div className="No-auth" >Please log in</div>
                 </Route>
-                <Route path='/login' component={Signin} />
-                <Route path='/registration' component={Signup} />
+                <FormContext.Provider value={{
+                  error
+                }}>
+                  <Route path='/login' component={Signin} />
+                  <Route path='/registration' component={Signup} />
+                </FormContext.Provider>
                 <Redirect to='/' />
               </Switch>
             }

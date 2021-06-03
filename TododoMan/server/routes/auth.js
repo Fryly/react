@@ -117,7 +117,7 @@ router.put('/addtask/:id', async (req, res) => {
         text: req.body.obj.text,
         completed: req.body.obj.completed,
         description: req.body.obj.description,
-        deadline: req.body.obj.deadline
+        deadline: req.body.obj.deadline,
     }
     try{
         const addtask = await User.findOneAndUpdate({

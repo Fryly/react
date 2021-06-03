@@ -15,15 +15,14 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
     const [form, setForm] = React.useState({
         text: '',
         description: '',
+        completed: false,
         deadline: '',
-        completed: false  
     })
 
     let { id } = useParams();
     let tasks = find(parseInt(id));
-    let taskItems = tasks.tasks
+    let taskItems = tasks.tasks //!!
     const ModalRef = React.useRef();
-
     const handleVisiblePopupTask = () => {
         setPopupTask(!visiblePopupTask)
     }
@@ -34,7 +33,7 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
             text: '',
             description: '',
             deadline: '',
-            completed: false
+            completed: false,
         })
         handleAdd(tasks.id,form)
         alert(`Задача была добавлена`)

@@ -1,8 +1,9 @@
 import React from 'react'
 import './TodoTask.css'
 
-import { Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { NotTodo, Task, FullTask } from '../index';
+import CalendarEvent from '../Calendar/CalendarEvent';
 
 function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask, handleAddTask, handleEditTask} ) {
     return (
@@ -14,20 +15,21 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                         : null
                 }
             </>
-            <Route path='/main/fulltask'>
-                {
-                    items.map((item, _) => (
-                        <FullTask
-                            key={item.id}
-                            todos={item}
-                            id={item.id}
-                            handleDelete={handleDeleteTask}
-                            handleComplite={handleCompliteTask}
-                        />
-                    ))
-                }
-            </Route>
+           
             <Switch>
+                <Route path='/main/fulltask'>
+                    {
+                        items.map((item, _) => (
+                            <FullTask
+                                key={item.id}
+                                todos={item}
+                                id={item.id}
+                                handleDelete={handleDeleteTask}
+                                handleComplite={handleCompliteTask}
+                            />
+                        ))
+                    }
+                </Route>
                 <Route path='/main/list/:id'>
                     <Task 
                         item={items} 
@@ -38,7 +40,13 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                         handleEditTask={handleEditTask}
                     />
                 </Route>
+                <Route path='/main/calendar'>
+                    <CalendarEvent 
+                        item={items}
+                    />
+                </Route>
             </Switch>
+           
         </div>
     )
 }
