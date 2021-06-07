@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './TodoTask.css'
 
 import { Route, Switch } from 'react-router-dom'
@@ -6,6 +6,23 @@ import { NotTodo, Task, FullTask } from '../index';
 import CalendarEvent from '../Calendar/CalendarEvent';
 
 function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask, handleAddTask, handleEditTask} ) {
+
+    const getTodoEvents = () => {
+       let eventTask = []
+       items.map( item  => {
+            item.tasks.map( curItm => {
+                eventTask.push ({
+                    color: item.colorName,
+                    title: curItm.text,
+                    date: curItm.deadline
+                })
+                return curItm
+            })
+            return item
+        })
+        return eventTask
+    }
+
     return (
         <div className="Todo-task">
             <>
@@ -32,7 +49,7 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                 </Route>
                 <Route path='/main/list/:id'>
                     <Task 
-                        item={items} 
+                        item={items}
                         handleEdit={handleEditText}
                         handleDelete={handleDeleteTask}
                         handleComplite={handleCompliteTask}
@@ -42,7 +59,7 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                 </Route>
                 <Route path='/main/calendar'>
                     <CalendarEvent 
-                        item={items}
+                        item={getTodoEvents()}
                     />
                 </Route>
             </Switch>

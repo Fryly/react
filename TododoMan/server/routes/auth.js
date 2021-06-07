@@ -28,7 +28,8 @@ router.post('/register', async (req, res) => {
     const user = new User ({
         name: req.body.name,
         password: hashedPassword,
-        folders: []
+        folders: [],
+        events: []
     });
 
     try {
@@ -180,6 +181,38 @@ router.put('/deletetask/:id', async (req, res) => {
         );
         const savedeletetask = await deletetask.save();
         res.json(savedeletetask)
+    }catch(err){
+        res.json({message: err})
+    }
+});
+
+router.get('/events/:id', async (req, res) => {
+    try{
+        const userEvent = await User.findOne({
+            _id: req.params.id
+        },{events: true});
+        res.json(userEvent)
+    }catch(err){
+        res.json({message: err})
+    }
+});
+
+router.put('/addevents/:id', async (req, res) => {
+    let event = {
+        color: req.body.color,
+        title: req.body.title,
+        date: req.body.date,
+    }
+    try{
+        const addevent = await User.findOneAndUpdate({
+            _id: req.params.id
+        },{
+            $push: {
+                events: event
+            }
+        });
+        const saveaddevent = await addevent.save();
+        res.json(saveaddevent);
     }catch(err){
         res.json({message: err})
     }

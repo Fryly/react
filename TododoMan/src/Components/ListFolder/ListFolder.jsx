@@ -6,7 +6,7 @@ import Del from '../../assets/del.png'
 import { Badge } from '../index';
 
 
-function ListFolder({ items, onClickDelete }) {
+function ListFolder({ items, onClickDelete, onClickItem }) {
 
     return (
         <div className='List-folder'>
@@ -25,7 +25,6 @@ function ListFolder({ items, onClickDelete }) {
                     items.map((item,index) => (
                             <li
                                 key={index}
-                               
                             >
                                 <NavLink to={`/main/list/${item.id}`}
                                     activeClassName="Active-folder"

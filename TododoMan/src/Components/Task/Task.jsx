@@ -1,6 +1,5 @@
 import React from 'react'
 import './Task.css'
-
 import Add from './../../assets/plus.png'
 import Edit from '../../assets/repeir.png'
 
@@ -20,13 +19,13 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
     })
 
     let { id } = useParams();
-    let tasks = find(parseInt(id));
-    let taskItems = tasks.tasks //!!
+    let tasks = item.find( p => p.id === Number(id) );
+    let taskItems = tasks?.tasks
     const ModalRef = React.useRef();
+
     const handleVisiblePopupTask = () => {
         setPopupTask(!visiblePopupTask)
     }
-
 
     const onAdd = () => {
         setForm({
@@ -67,10 +66,6 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
         handleEditTask(obj, index, tasks.id)
     }
 
-    function find(id) {
-        return item.find(p => p.id === id);
-    }
-
     const handleOutsideClick = (e) => {
         const path = e.path || (e.composedPath && e.composedPath());
         if (!path.includes(ModalRef.current)){
@@ -85,14 +80,14 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
     return (
         <div className="Task">
             <h1 
-                className={classNames('Title', { [`Title--${tasks.colorName}`]: tasks.colorName })}
+                className={classNames('Title', { [`Title--${tasks?.colorName}`]: tasks?.colorName })}
             >
-                {tasks.name}
+                {tasks?.name}
                 <img onClick={() => onClickEdit(tasks.name)} src={Edit} alt="edit"/>
             </h1>
             <div className="Border"></div>
                 {
-                    taskItems.length === 0
+                    taskItems === undefined
                         ? []
                         : <TaskItem
                             items={taskItems}

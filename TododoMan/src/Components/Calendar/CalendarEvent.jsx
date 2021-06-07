@@ -1,18 +1,25 @@
 import React from 'react';
 
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { connect } from 'react-redux'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import './Calendar.css'
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import Button from '../Button/Button';
 import ModalEvent from '../Popup/ModalEvent';
+import { featchAddEvent, featchEvents } from '../../redux/actions/events'
+
 const localizer = momentLocalizer(moment)
+const userId = localStorage.getItem('auth-token') === null 
+            ? '' 
+            : JSON.parse(localStorage.getItem('auth-token')).data._id
+const url = `http://localhost:3001/users/events/${userId}`
+
 
 class CalendarEvent extends React.Component {
     constructor () {
         super();
         this.state = {
-            event: [],
             isModal: false,
             form: {
                 text: '',
@@ -23,36 +30,14 @@ class CalendarEvent extends React.Component {
         this.ModalRef = React.createRef();
     }
 
-    getTodoEvents() {
-        const data = this.props.item
-        let event = [];
-        data.map( item  => {
-            item.tasks.map( curItm => {
-                event.push({
-                    color: item.colorName,
-                    title: curItm.text,
-                    date: curItm.deadline
-                })
-                
-            } )
-        })
-        this.setState({ 
-            event,
-        })     
-    }
-
     showModal = () => {
-        this.setState( { isModal: true } )
-    }
-
-    closeModal = () => {
-        this.setState( { isModal: false } )
+        this.setState( { isModal: !this.state.isModal } )
     }
 
     handleOutsideClick = (e) => {
         const path = e.path || (e.composedPath && e.composedPath());
         if (!path.includes(this.ModalRef.current)){
-            this.setState( { isModal: false } )
+            this.setState( { isModal: !this.state.isModal } )
         }
     }
 
@@ -66,30 +51,29 @@ class CalendarEvent extends React.Component {
             title: this.state.form.text,
             date: this.state.form.deadline
         }
-        this.setState( {
-            event: [...this.state.event, newEvent]
-        })
-    }
-    // componentWillMount(){
-    //     this.getTodoEvents();
-    //     console.log(this.props.item)
+
+        const url = `http://localhost:3001/users/addevents/${userId}`
         
-    // }
+        this.props.featchAddEvent( url, newEvent )
 
-    componentDidMount (prevProps, prevState) {
-        // console.log(this.state.event)
-        this.getTodoEvents();
+    }
+
+    componentDidMount () {
         // document.body.addEventListener('click', this.handleOutsideClick)
+        // this.props.featchEvents(url, this.props.item)
     }
 
-    componentDidUpdate (prevProps, prevState) {
-        if (prevState.event.length > this.state.event.length){
-            console.log('ss')
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if ( prevProps.item !== this.props.item ){
+            this.props.featchEvents(url, this.props.item)
         }
-    }
+        console.log(prevProps.item,'sss')
+      }
+
+    
+
 
     render (){
-        console.log(this.state.event)
        return (
             <div className='Event-calendar'> 
                 <Button
@@ -100,7 +84,7 @@ class CalendarEvent extends React.Component {
                 </Button>  
                 <Calendar
                     localizer={localizer}
-                    events={this.state.event}
+                    events={this.props.event}
                     titleAccessor="title"
                     startAccessor="date"
                     endAccessor="date"
@@ -118,7 +102,7 @@ class CalendarEvent extends React.Component {
                 {
                     this.state.isModal 
                     ?   <ModalEvent
-                            close = {this.closeModal}
+                            close = {this.showModal}
                             ModalRef = {this.ModalRef}
                             handleInputChange = {this.handleInputChange}
                             addEvent = {this.addEvent} 
@@ -130,4 +114,15 @@ class CalendarEvent extends React.Component {
     }
 }
 
-export default CalendarEvent
+const mapStateToProps = state => {
+    return {
+        event: state.events.event
+    }
+}
+
+const mapDispatchToProps =  {
+        featchEvents,
+        featchAddEvent,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarEvent);
