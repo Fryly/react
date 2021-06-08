@@ -27,18 +27,10 @@ class CalendarEvent extends React.Component {
                 deadline: '',
             }
         }
-        this.ModalRef = React.createRef();
     }
 
     showModal = () => {
         this.setState( { isModal: !this.state.isModal } )
-    }
-
-    handleOutsideClick = (e) => {
-        const path = e.path || (e.composedPath && e.composedPath());
-        if (!path.includes(this.ModalRef.current)){
-            this.setState( { isModal: !this.state.isModal } )
-        }
     }
 
     handleInputChange = (event) =>{
@@ -59,20 +51,15 @@ class CalendarEvent extends React.Component {
     }
 
     componentDidMount () {
-        // document.body.addEventListener('click', this.handleOutsideClick)
-        // this.props.featchEvents(url, this.props.item)
+        this.props.featchEvents(url, this.props.item)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if ( prevProps.item !== this.props.item ){
             this.props.featchEvents(url, this.props.item)
         }
-        console.log(prevProps.item,'sss')
       }
-
     
-
-
     render (){
        return (
             <div className='Event-calendar'> 
@@ -103,7 +90,6 @@ class CalendarEvent extends React.Component {
                     this.state.isModal 
                     ?   <ModalEvent
                             close = {this.showModal}
-                            ModalRef = {this.ModalRef}
                             handleInputChange = {this.handleInputChange}
                             addEvent = {this.addEvent} 
                         />

@@ -11,7 +11,7 @@ export default props => {
 
        return (
                 <div className="Popup-background">
-                    <div className="Popup-task" ref={props.ModalRef}>
+                    <div className="Popup-task">
                         <h2>Добавить событие</h2> 
                         <Input type='text' name='text' placeholder='Новое событие' onValueFolder={props.handleInputChange}/>
                         <Input type='text' name='description' placeholder='Описание' onValueFolder={props.handleInputChange}/>

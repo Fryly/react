@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './TodoTask.css'
 
 import { Route, Switch } from 'react-router-dom'
@@ -9,17 +9,15 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
 
     const getTodoEvents = () => {
        let eventTask = []
-       items.map( item  => {
-            item.tasks.map( curItm => {
+       items.map( item  => 
+            item.tasks.map( curItm => 
                 eventTask.push ({
                     color: item.colorName,
                     title: curItm.text,
                     date: curItm.deadline
                 })
-                return curItm
-            })
-            return item
-        })
+            )
+        )
         return eventTask
     }
 
