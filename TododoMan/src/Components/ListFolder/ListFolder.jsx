@@ -6,7 +6,7 @@ import Del from '../../assets/del.png'
 import { Badge } from '../index';
 
 
-function ListFolder({ items, onClickDelete, onClickItem }) {
+function ListFolder({ items, onClickDelete }) {
 
     return (
         <div className='List-folder'>

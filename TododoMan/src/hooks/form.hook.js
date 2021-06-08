@@ -13,9 +13,7 @@ export const useForm = () => {
 
     const changeHandler = ( event ) => {
         setForm({ ...form, [event.target.name]: event.target.value })
-        
     }
-
 
     return { form, changeHandler, error, token  }
 }

@@ -2,40 +2,37 @@ import React, { useState } from 'react'
 import './TaskItem.css'
 import Del from '../../assets/del.png'
 import Rep from '../../assets/repeir.png'
-import { ModalTask } from '..'
+import { ModalTask} from '../index';
+import { useModal } from '../../hooks/modal.hook'
 import Description from '../Description/Description'
 
 function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
 
-    const [visibleModal, setModal] = useState(false)
     const [openDescription, setDescription] = useState([])
-    const [editing, setEditing] = useState({
-        text: '',
-        description: '',
-        deadline: '',
-        completed: false
-    })
     const [i, setI] = useState(null)
-    const ModalRef = React.useRef();
+    const { 
+        handleInputChange,  
+        form,
+        setForm, 
+        ModalRef, 
+        visiblePopupTask, 
+        setPopupTask 
+      } = useModal({ text: '', description: '', deadline: '', completed: false });
 
     const handleClickModal = (text, description, deadline, index) => {
-        setEditing({
+        setForm({
             text,
             description,
             deadline,
         })
         setI(index)
-        setModal(!visibleModal)
-    }
-
-    const handleInputChange = (event) =>{
-        setEditing({ ...editing, [event.target.name]: event.target.value })
+        setPopupTask(!visiblePopupTask)
     }
 
     const handleClickEdit = () => {
         alert(`Задача была отредактирована`)
-        onClickEdit(editing, i)
-        setModal(false)
+        onClickEdit(form, i)
+        setPopupTask(false)
     }
 
     const handleClickDescription = (name) => { 
@@ -45,18 +42,6 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
             setDescription(open)
         }
     }
-
-    const handleOutsideClick = (e) => {
-        const path = e.path || (e.composedPath && e.composedPath());
-        if (!path.includes(ModalRef.current)){
-            setModal(false)
-        }
-    }
-
-
-    React.useEffect( () => {
-        document.body.addEventListener('click', handleOutsideClick)
-    },[]);
 
     return (
         <div className="Task-block">
@@ -121,15 +106,15 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
                     ))
                 }
                 {
-                    visibleModal &&
+                    visiblePopupTask &&
                         <ModalTask 
                             onClickClose={handleClickModal}
                             ModalRef={ModalRef}
                             nameText='Редактировать задачу'
                             handleInputChange={handleInputChange}
-                            text={editing.text}
-                            description={editing.description}
-                            deadline={editing.deadline}
+                            text={form.text}
+                            description={form.description}
+                            deadline={form.deadline}
                             onAddTask={handleClickEdit}
                         />
                 }

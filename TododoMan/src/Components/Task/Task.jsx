@@ -6,42 +6,31 @@ import Edit from '../../assets/repeir.png'
 import { useParams } from 'react-router-dom'
 import { Button, ModalTask, TaskItem } from '../index';
 import classNames from 'classnames';
+import { useModal } from '../../hooks/modal.hook'
 
 
 function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handleEditTask}) {
 
-    const [visiblePopupTask, setPopupTask] = React.useState(false)
-    const [form, setForm] = React.useState({
-        text: '',
-        description: '',
-        completed: false,
-        deadline: '',
-    })
-
     let { id } = useParams();
     let tasks = item.find( p => p.id === Number(id) );
     let taskItems = tasks?.tasks
-    const ModalRef = React.useRef();
-
-    const handleVisiblePopupTask = () => {
-        setPopupTask(!visiblePopupTask)
-    }
+    const { 
+            handleInputChange,  
+            handleVisiblePopupTask, 
+            form,
+            setForm, 
+            ModalRef, 
+            visiblePopupTask, 
+            setPopupTask 
+          } = useModal({ text: '', description: '', deadline: '', completed: false });
 
     const onAdd = () => {
-        setForm({
-            text: '',
-            description: '',
-            deadline: '',
-            completed: false,
-        })
+        setForm({})
         handleAdd(tasks.id,form)
         alert(`Задача была добавлена`)
         setPopupTask(false)
     }
 
-    const handleInputChange = (event) =>{
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
     
     const onDelete = (index) => {
         handleDelete(tasks.id,index)
@@ -65,17 +54,6 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
     const onEdit = (obj, index) => {
         handleEditTask(obj, index, tasks.id)
     }
-
-    const handleOutsideClick = (e) => {
-        const path = e.path || (e.composedPath && e.composedPath());
-        if (!path.includes(ModalRef.current)){
-            setPopupTask(false)
-        }
-    }
-
-    React.useEffect( () => {
-        document.body.addEventListener('click', handleOutsideClick)
-    },[]);
 
     return (
         <div className="Task">
