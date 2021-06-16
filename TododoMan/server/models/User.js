@@ -65,8 +65,16 @@ const userSchema = new mongoose.Schema({
                 type: String,
                 require: true,
             },
-            date: {
+            description: {
                 type: String,
+                require: true,
+            },
+            start: {
+                type: Date,
+                require: true,
+            },
+            end: {
+                type: Date,
                 require: true,
             },
         }
