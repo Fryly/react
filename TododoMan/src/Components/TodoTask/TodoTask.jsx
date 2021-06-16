@@ -14,7 +14,9 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
                 eventTask.push ({
                     color: item.colorName,
                     title: curItm.text,
-                    date: curItm.deadline
+                    description: curItm.description,
+                    start: new Date(`${curItm.deadline} 8:00`),
+                    end: new Date(`${curItm.deadline} 9:00`),
                 })
             )
         )
