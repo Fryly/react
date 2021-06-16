@@ -201,7 +201,9 @@ router.put('/addevents/:id', async (req, res) => {
     let event = {
         color: req.body.color,
         title: req.body.title,
-        date: req.body.date,
+        description: req.body.description,
+        start: req.body.start,
+        end: req.body.end,
     }
     try{
         const addevent = await User.findOneAndUpdate({
