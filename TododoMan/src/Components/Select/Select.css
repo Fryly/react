@@ -1,0 +1,41 @@
+.Select-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px; 
+}
+
+.Select {
+    width: 110px;
+    position: relative;
+    text-align: center;
+}
+
+.Select-text {
+    background: #fea405;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+}
+
+.Option {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    background-color: #F1F1F1;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.Option span {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.Option span:hover {
+    background-color: #fea405;
+    color: #fff;
+}
