@@ -1,35 +1,49 @@
 import React from 'react'
 import './Task.css'
-import classNames from 'classnames';
-import { TaskItem } from '../index';
 
-function FullTask({todos, handleDelete, handleComplite, id}) {
+import StandardView from './StandardView'
+import Select from '../Select/Select'
+import Table from '../Table/Table'
 
-    const onDelete= (index) => {
-        handleDelete(id,index)
+
+function FullTask({ items, handleDelete, handleComplite, handleEdit }) {
+
+    const [select, setSelect] = React.useState("Обычный");
+    const [openSelect, setOpenSelect] = React.useState(false);
+
+    const handleClickSelect = ( select ) => {
+        setSelect(select)
+        setOpenSelect(!openSelect)
     }
 
-    const onComplite = (index,complite) => {
-        handleComplite(id,index,complite)
+    const handleOpenSelect = () => {
+        setOpenSelect(!openSelect)
     }
 
     return (
-        <div className="Task Full-task">
-            <h1 
-                className={classNames('Title', { [`Title--${todos.colorName}`]: todos.colorName })}
-            >
-                {todos.name}
-            </h1>
-            <div className="Border"></div>
-                {
-                    todos.length === 0
-                        ? []
-                        : <TaskItem
-                            items={todos.tasks}
-                            onClickCompleted={onComplite}
-                            onClickDelete={onDelete}
-                          />
-                }
+        <div className="Full-task">
+            <Select
+                select={select}
+                openSelect={openSelect}
+                handleClickSelect={handleClickSelect}
+                handleOpenSelect={handleOpenSelect}
+            />
+            {
+                select === "Обычный"
+                ? items.map((item, _) => (
+                    <StandardView
+                        key={item.id}
+                        todos={item}
+                        id={item.id}
+                        handleDelete={handleDelete}
+                        handleComplite={handleComplite}
+                        handleEdit={handleEdit}
+                    />
+                ))
+                : <Table
+                    items={items}
+                  />
+            }
         </div>
     )
 }

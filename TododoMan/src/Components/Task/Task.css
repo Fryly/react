@@ -2,32 +2,32 @@
     padding: 56px 100px;     
 }
 
-.Task .Title{
+.Title{
     font-weight: bold;
     font-size: 42px;
     display: flex;
     align-items: center;
 }
 
-.Task .Title img{
+.Title img{
     margin-left: 14px;
     cursor: pointer;
 }
 
-.Task .Border{
+.Border{
     height: 2px;
     margin: 20px 0 40px 0;
     background: #F2F2F2;
     width: 100%;
 }
 
-.Task .Button {
+.Button {
     color: #767676;
     font-size: 14px;
 }
 
 
-.Task .Button img{
+.Button img{
     margin: 0 37px 0 6px;
 }
 
@@ -63,14 +63,11 @@
     color: #ffbbcc;
 }
 
-.Full-task:first-child{
-    padding-top: 56px;
-}
-
-.Full-task:last-child{
-    padding-bottom: 56px;
-}
-
 .Full-task{
-    padding: 30px 100px 0px 100px; 
+    padding: 46px 0; 
+}
+
+.Standard-view {
+    margin-bottom: 50px;
+    padding: 0 100px; 
 }
