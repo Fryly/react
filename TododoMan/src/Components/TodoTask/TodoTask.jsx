@@ -35,17 +35,12 @@ function TodoTask( {items, handleEditText, handleDeleteTask, handleCompliteTask,
            
             <Switch>
                 <Route path='/main/fulltask'>
-                    {
-                        items.map((item, _) => (
-                            <FullTask
-                                key={item.id}
-                                todos={item}
-                                id={item.id}
-                                handleDelete={handleDeleteTask}
-                                handleComplite={handleCompliteTask}
-                            />
-                        ))
-                    }
+                    <FullTask
+                        items={items}
+                        handleDelete={handleDeleteTask}
+                        handleComplite={handleCompliteTask}
+                        handleEdit={handleEditTask}
+                    />
                 </Route>
                 <Route path='/main/list/:id'>
                     <Task 

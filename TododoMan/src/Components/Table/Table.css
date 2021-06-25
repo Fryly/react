@@ -1,0 +1,10 @@
+.Table-block {
+    margin-top: 20px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.MuiFormLabel-root {
+    width: 100px;
+    border: none
+}
