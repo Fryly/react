@@ -8,3 +8,110 @@
     width: 100px;
     border: none
 }
+
+.Table-two {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.Table-header {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.Table-cell {
+    width: 100%;
+}
+
+tr {
+    display: flex;
+    flex: 1;
+}
+
+.Table {
+    border: 1px solid rgba(224, 224, 224, 1);
+    width: 100%;
+    border-spacing: 0px;
+}
+
+th {
+    border-right: 1px solid rgba(224, 224, 224, 1);
+    padding: 0.5rem;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+th:last-child {
+    border-right: none;
+}
+
+td {
+      border-top: 1px solid rgba(224, 224, 224, 1);
+      margin: 0;
+      padding: 0.5rem;
+  }
+
+.Table-row {
+    text-align: center;
+}
+
+.Table-two span.Sort-bottom {
+    border-bottom: 2px solid #fea405;
+}
+
+.Table-two span.Sort-top {
+    border-top: 2px solid #fea405;
+}
+
+input {
+    background: #FFFFFF;
+    border: 2px solid #EFEFEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+    padding: 7px 10px;
+    margin: 5px;
+}
+
+.Table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.Table-footer button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #4DD599;
+    border-radius: 4px;
+    color: #FFF;
+    padding: 11px 0;
+    width: 30%;
+}
+
+.Table-footer button:disabled {
+    background: #F1F1F1;
+}
+
+.Table-footer select {
+    padding: 11px 0;
+    background-color: #fea405;
+    color: #FFF;
+    border: none;
+    text-align: center;
+    outline: none;
+}
+
+.Table-footer select option {
+    background-color: #F1F1F1;
+    border: none;
+    color: #000;
+}
+
+.Table-two span {
+    padding: 8px 0;
+    border: 2px solid transparent;
+}
