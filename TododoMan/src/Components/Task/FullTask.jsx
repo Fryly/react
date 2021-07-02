@@ -3,7 +3,6 @@ import './Task.css'
 
 import StandardView from './StandardView'
 import Select from '../Select/Select'
-import Table from '../Table/Table'
 import TableTwo from '../Table/TableTwo'
 
 
@@ -30,26 +29,20 @@ function FullTask({ items, handleDelete, handleComplite, handleEdit }) {
                 handleOpenSelect={handleOpenSelect}
             />
             {
-                select === "Обычный" &&
-                items.map((item, _) => (
-                    <StandardView
-                        key={item.id}
-                        todos={item}
-                        id={item.id}
-                        handleDelete={handleDelete}
-                        handleComplite={handleComplite}
-                        handleEdit={handleEdit}
-                    />
-                ))
-            }
-            {
-                select === "Табличный"
-                  ? <Table
-                        items={items}
-                    />
-                  :  <TableTwo
-                        items={items}
-                    />
+                select === "Обычный" 
+                ?   items.map((item, _) => (
+                        <StandardView
+                            key={item.id}
+                            todos={item}
+                            id={item.id}
+                            handleDelete={handleDelete}
+                            handleComplite={handleComplite}
+                            handleEdit={handleEdit}
+                        />
+                    ))
+                : <TableTwo
+                    items={items}
+                  />
             }
         </div>
     )

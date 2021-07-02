@@ -1,7 +1,7 @@
 import React from 'react'
 import './Select.css'
 
-const SELECT = ["Обычный", "Табличный", "Таблица 2"]
+const SELECT = ["Обычный", "Табличный"]
 
 function Select( {select, openSelect, handleClickSelect, handleOpenSelect} ) {
 
