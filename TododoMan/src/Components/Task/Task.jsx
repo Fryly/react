@@ -8,6 +8,8 @@ import { Button, ModalTask, TaskItem } from '../index';
 import classNames from 'classnames';
 import { useModal } from '../../hooks/modal.hook'
 
+import { buttonName } from '../Util/Constants'
+
 
 function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handleEditTask}) {
 
@@ -84,11 +86,11 @@ function Task({item, handleEdit, handleDelete, handleComplite, handleAdd, handle
                                 text={form.text}
                                 description={form.description}
                                 deadline={form.deadline}
-                                nameText='Добавить задачу'
+                                nameText={buttonName.addTask}
                             />
                         :   <Button className="Button-open" onClick={handleVisiblePopupTask}>
                                 <img src={Add} alt="ADD"/> 
-                                Добавить задачу
+                                {buttonName.addTask}
                             </Button>
                 }
         </div>

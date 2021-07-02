@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 import ModalEvent from '../Popup/ModalEvent';
 import ModalInfo from '../Popup/ModalInfo';
 import { featchAddEvent, featchEvents } from '../../redux/actions/events'
+import { buttonName } from '../Util/Constants'
 
 const localizer = momentLocalizer(moment)
 const userId = localStorage.getItem('auth-token') === null 
@@ -81,7 +82,7 @@ class CalendarEvent extends React.Component {
                     className="Event-button"
                     onClick={this.showModal}
                 >
-                    Добавить событие
+                    {buttonName.addEvent}
                 </Button>  
                 <Calendar
                     localizer={localizer}

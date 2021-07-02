@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function filterColumn({
-    column: { filterValue, preFilteredRows, setFilter },
+    column: { filterValue, preFilteredRows, setFilter,  },
   }) {
     const count = preFilteredRows.length
-  
+
     return (
       <input
         value={filterValue || ''}

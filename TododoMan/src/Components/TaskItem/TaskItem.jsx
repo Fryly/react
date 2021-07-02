@@ -5,6 +5,7 @@ import Rep from '../../assets/repeir.png'
 import { ModalTask} from '../index';
 import { useModal } from '../../hooks/modal.hook'
 import Description from '../Description/Description'
+import { buttonName } from '../Util/Constants'
 
 function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
 
@@ -110,7 +111,7 @@ function TaskItem({ items, onClickDelete, onClickCompleted, onClickEdit }) {
                         <ModalTask 
                             onClickClose={handleClickModal}
                             ModalRef={ModalRef}
-                            nameText='Редактировать задачу'
+                            nameText={buttonName.changeTask}
                             handleInputChange={handleInputChange}
                             text={form.text}
                             description={form.description}

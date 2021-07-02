@@ -2,6 +2,7 @@ import React from 'react'
 import './Popup.css'
 
 import { Badge, Input, Button } from '../index';
+import { buttonName } from '../Util/Constants'
 
 import Close from '../../assets/Close.png'
 
@@ -56,7 +57,7 @@ function Popup({ClosePopUp, setClosePopUp, onClickAdd, colorItem}) {
                 }
             </div>
             <Button className='Add-folder' onClick={addNewFolder}> 
-                Добавить
+                {buttonName.addFolder}
             </Button>
         </div>
     )
