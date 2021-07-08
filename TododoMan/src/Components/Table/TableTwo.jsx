@@ -8,8 +8,6 @@ import { column } from '../Util/Constants'
 
 function TableTwo( {items} ) {
 
-    const [pageI, setPageI] = React.useState(0)
-
     const getData = () => {
         const dataTable = items.reduce( (acc, item) => {
             for ( let m = 0; m < item.tasks.length; m++){
@@ -44,7 +42,7 @@ function TableTwo( {items} ) {
         pageOptions,
         state,
         setPageSize,
-      } = useTable({ columns, data, defaultColumn, initialState: {pageIndex: pageI} }, useFilters, useSortBy, usePagination, useRowSelect )
+      } = useTable({ columns, data, defaultColumn }, useFilters, useSortBy, usePagination, useRowSelect )
 
     const { pageIndex, pageSize } = state
 
@@ -95,7 +93,7 @@ function TableTwo( {items} ) {
                 </tbody>
             </table>
             <div className="Table-footer">
-                <button onClick={ () => {previousPage(); setPageI(pageIndex - 1)}} disabled={!canPreviousPage}>Previous</button>
+                <button onClick={ () => previousPage() } disabled={!canPreviousPage}>Previous</button>
                 <span>
                     Page {pageIndex + 1} of {pageOptions.length}
                 </span>
@@ -121,7 +119,7 @@ function TableTwo( {items} ) {
                         ))
                     }
                 </div>
-                <button onClick={ () => {nextPage(); setPageI(pageIndex + 1)}} disabled={!canNextPage}>Next</button>
+                <button onClick={ () => nextPage() } disabled={!canNextPage}>Next</button>
             </div>
         </div>
     )
